@@ -3,6 +3,7 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:quran_app/container/About.dart';
 import 'package:quran_app/container/Home.dart';
 import 'package:quran_app/container/Settings.dart';
+import 'package:quran_app/container/ui_learn/ui_one.dart';
 import 'package:quran_app/redux/model/app_state.dart';
 import 'package:quran_app/redux/reducers/reducers.dart';
 import 'package:redux/redux.dart';
@@ -28,8 +29,9 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         initialRoute: '/',
         routes: {
-          '/': (context) => Home(),
+          '/': (context) => UiOne(),
           '/about': (context) => About(),
+          '/UiOne': (context) => UiOne(),
           '/settings': (context) => Settings(),
         },
       ),
