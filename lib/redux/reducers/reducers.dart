@@ -12,8 +12,10 @@ AppState reducer(AppState prevState, dynamic action) {
     newState.bold = action.payload;
   } else if (action is Italic) {
     newState.italic = action.payload;
-  }else if (action is Customers) {
+  } else if (action is Customers) {
     newState.customers = action.payload;
+  } else if (action is AppTheme) {
+    newState.darkmode = action.payload;
   }
 
   return newState;

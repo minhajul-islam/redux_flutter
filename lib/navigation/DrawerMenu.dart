@@ -31,9 +31,22 @@ class DrawerMenu extends StatelessWidget {
             Navigator.pushReplacementNamed(context, '/');
           }),
           getLine(),
+          getListTile('ListAlquran', onTap: () {
+            Navigator.pushReplacementNamed(context, '/listAlquran');
+          }),
+          getLine(),
+          getListTile('AudioApp', onTap: () {
+            Navigator.pushReplacementNamed(context, '/AudioApp');
+          }),
+          getLine(),
           getListTile('About', onTap: () {
             Navigator.pushReplacementNamed(context, '/about');
           }),
+          getLine(),
+          getListTile('IntroPage', onTap: () {
+            Navigator.pushReplacementNamed(context, '/IntroPage');
+          }),
+          getLine(),
           getListTile('UiOne', onTap: () {
             Navigator.pushReplacementNamed(context, '/UiOne');
           }),

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:json_table/json_table.dart';
 import 'package:quran_app/data/api/ApiFunction.dart';
+import 'package:quran_app/data/model/post_model.dart';
 import 'package:quran_app/redux/actions/actions.dart';
 import 'package:quran_app/redux/model/app_state.dart';
 
@@ -20,7 +21,9 @@ class _SimpleTableState extends State<SimpleTable> {
   initState() {
     super.initState();
     new Future.delayed(Duration.zero,() {
-      getCustomers(context);
+     // getCustomers(context);
+     // getAllPosts(context);
+      ApiFunction(context).loadInfo();
     });
   }
   @override
@@ -82,7 +85,7 @@ class _SimpleTableState extends State<SimpleTable> {
                 ],
               )
                   : Center(
-                child: Text(getPrettyJSONString(jsonSample)),
+                child: Text(getPrettyJSONString(state.customers)),
               ),
             );
           },
@@ -107,4 +110,6 @@ class _SimpleTableState extends State<SimpleTable> {
     String jsonString = encoder.convert(json.decode(jsonObject));
     return jsonString;
   }
+
+
 }

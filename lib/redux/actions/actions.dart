@@ -21,12 +21,9 @@ class Customers {
   Customers(this.payload);
 }
 
-final Function getCustomers = (BuildContext context) {
-  return StoreProvider.of<AppState>(context).dispatch(Customers(getCustomer()));
-};
-
-final Function getUser = (BuildContext context) {
-  return StoreProvider.of<AppState>(context).dispatch(Customers(getUserInfo()));
+final Function getUser = (BuildContext context,String playLoad) {
+  // save to local to implement
+  return StoreProvider.of<AppState>(context).dispatch(Customers(playLoad));
 };
 
 /// Bold Type
@@ -40,4 +37,10 @@ class Italic {
   final bool payload;
 
   Italic(this.payload);
+}
+
+class AppTheme {
+  final bool payload;
+
+  AppTheme(this.payload);
 }

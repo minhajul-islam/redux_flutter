@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:quran_app/components/cardsetting.dart';
 import 'package:quran_app/navigation/DrawerMenu.dart';
 import 'package:quran_app/redux/actions/actions.dart';
 import 'package:quran_app/redux/model/app_state.dart';
@@ -19,6 +20,16 @@ class Settings extends StatelessWidget {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
+              CardSetting(
+                title: 'Theme',
+                leading: Switch(
+                  value: state.darkmode,
+                  onChanged: (newValue) => {
+                  StoreProvider.of<AppState>(context)
+                      .dispatch(AppTheme(newValue))
+                  },
+                ),
+              ),
               Padding(
                 padding: EdgeInsets.only(left: 20, top: 20),
                 child: Text(
