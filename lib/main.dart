@@ -1,47 +1,35 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_redux/flutter_redux.dart';
-import 'package:quran_app/container/About.dart';
-import 'package:quran_app/container/AudioPlayerDemo.dart';
-import 'package:quran_app/container/Home.dart';
-import 'package:quran_app/container/Settings.dart';
-import 'package:quran_app/container/intro/IntroPage.dart';
-import 'package:quran_app/container/ui_learn/ui_one.dart';
-import 'package:quran_app/redux/model/app_state.dart';
-import 'package:quran_app/redux/reducers/reducers.dart';
-import 'package:redux/redux.dart';
+import 'package:provider/provider.dart';
+import 'package:quran_app/data/location.dart';
+import 'package:quran_app/data/themes.dart';
+import 'package:quran_app/data/uistate.dart';
+import 'package:quran_app/ui/audio_player_demo.dart';
+import 'package:quran_app/ui/home.dart';
+import 'package:quran_app/ui/intro/IntroPage.dart';
+import 'package:quran_app/ui/json_show_page.dart';
+import 'package:quran_app/ui/settings.dart';
 
-import 'container/listalquran.dart';
-
-
-void main() {
-  final _initialState = AppState(sliderFontSize: 0.5);
-  final Store<AppState> _store =
-  Store<AppState>(reducer, initialState: _initialState);
-
-  runApp(MyApp(store: _store));
-}
+void main() => runApp(MultiProvider(providers: [
+  ChangeNotifierProvider(builder: (_) => UiState()),
+  ChangeNotifierProvider(builder: (_) => ThemeNotifier()),
+  ChangeNotifierProvider(builder: (_) => LocationNotifier()),
+], child: MyApp()));
 
 class MyApp extends StatelessWidget {
-  final Store<AppState> store;
-
-  MyApp({this.store});
-
   @override
   Widget build(BuildContext context) {
-    return StoreProvider<AppState>(
-      store: store,
-      child: MaterialApp(
-        initialRoute: '/',
-        routes: {
-          '/': (context) => About(),
-          '/listAlquran': (context) => ListAlquran(),
-          '/AudioApp': (context) => AudioApp(),
-          '/about': (context) => About(),
-          '/IntroPage': (context) => IntroPage(),
-          '/UiOne': (context) => UiOne(1),
-          '/settings': (context) => Settings(),
-        },
-      ),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Quran App',
+      theme: Provider.of<ThemeNotifier>(context).curretThemeData,
+      initialRoute: '/',
+      routes: {
+        '/': (context) => Home(),
+        '/settings': (context) => Settings(),
+        '/jsonView': (context) => JsonView(),
+        '/audioApp': (context) => AudioApp(),
+        '/intro': (context) => IntroPage(),
+      },
     );
   }
 }
