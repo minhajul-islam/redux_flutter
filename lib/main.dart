@@ -7,6 +7,7 @@ import 'package:quran_app/ui/audio_player_demo.dart';
 import 'package:quran_app/ui/home.dart';
 import 'package:quran_app/ui/intro/IntroPage.dart';
 import 'package:quran_app/ui/json_show_page.dart';
+import 'package:quran_app/ui/matching_game/matching_game.dart';
 import 'package:quran_app/ui/settings.dart';
 
 void main() => runApp(MultiProvider(providers: [
@@ -29,6 +30,7 @@ class MyApp extends StatelessWidget {
         '/jsonView': (context) => JsonView(),
         '/audioApp': (context) => AudioApp(),
         '/intro': (context) => IntroPage(),
+        '/game': (context) => MatchingGame(),
       },
     );
   }

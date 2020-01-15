@@ -182,6 +182,10 @@ class Drawers extends StatelessWidget {
             title: Text('Intro'),
             trailing: Icon(Icons.keyboard_arrow_right),
             onTap: () => Navigator.popAndPushNamed(context, '/intro')),
+        ListTile(
+            title: Text('Game'),
+            trailing: Icon(Icons.keyboard_arrow_right),
+            onTap: () => Navigator.popAndPushNamed(context, '/game')),
       ],
     );
   }

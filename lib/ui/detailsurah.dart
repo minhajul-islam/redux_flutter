@@ -4,10 +4,12 @@ import 'package:quran_app/data/model/allsurah.dart';
 import 'package:quran_app/data/services.dart';
 import 'package:quran_app/data/uistate.dart';
 import 'package:quran_app/ui/settings.dart';
+import 'package:quran_app/utility/UtilityFunction.dart';
 import 'package:quran_app/utility/style.dart';
 
 class DetailSurah extends StatefulWidget {
   final detail, index;
+
   DetailSurah({Key key, @required this.detail, this.index}) : super(key: key);
 
   @override
@@ -52,16 +54,32 @@ class _DetailSurahState extends State<DetailSurah> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             ListTile(
-                              leading:
-                                  Text(snapshot.data.text.keys.elementAt(i)),
-                              title: Text(
-                                '${snapshot.data.text[key]}',
-                                textAlign: TextAlign.end,
-                                style: TextStyle(
-                                  fontSize: ui.fontSize,
-                                  height: 1.5,
+                              leading: IconButton(
+                                onPressed: (){
+                                  showAlert(context,snapshot.data.text[key]);
+                                },
+                                icon: Icon(
+                                  Icons.volume_up,
+                                  color: Colors.green,
+                                  size: 30.0,
                                 ),
                               ),
+                              title: SelectableText(
+                                '${snapshot.data.text[key]}',
+                                  style: TextStyle(
+                                    fontSize: ui.fontSize,
+                                    height: 1.5,
+                                  ),
+                              )
+//
+//                              Text(
+//                                '${snapshot.data.text[key]}',
+//                                textAlign: TextAlign.end,
+//                                style: TextStyle(
+//                                  fontSize: ui.fontSize,
+//                                  height: 1.5,
+//                                ),
+//                              ),
                             ),
                             if (ui.terjemahan)
                               Column(
